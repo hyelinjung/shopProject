@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>로그인 / 회원가입 폼 템플릿</title>
+    <link rel="stylesheet" href="../css/loginForm.css">
+    <link rel="stylesheet" href="../css/join.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="form-wrap">
+        <div class="button-wrap">
+            <div id="btn"></div>
+            <button type="button" class="togglebtn" >REGISTER</button>
+
+        </div>
+
+        <form action="/members/join" method="post" id="form" th:object="${userDto}">
+            <input type="text" th:id="username" th:field="*{username}" class="input-field" placeholder="User name or Email" required>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="fieldError">Incorrect data</p>
+
+            <input type="email" th:id="email" th:field="*{email}" class="input-field" placeholder="Your Email" required>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+            <button type="button"  class="btn-gradient red mini" onclick="emailCheck()">인증번호 보내기</button>
+
+            <input  th:id="mail_check_input" class="input-field" placeholder="Enter email check" required>
+            <span id="mail_check_warn"></span>
+
+            <input type="password" th:id="pwd_input" th:field="*{password}" class="input-field" placeholder="Enter Password" required>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
+
+            <input  th:id="pwd_check" class="input-field" placeholder="Enter Password check" required>
+            <span class="pwd_ch_input"> </span></br>
+
+            <div class="address_input">
+                <input type="text" id="sample6_postcode" class="input-field" name="addr" placeholder="우편번호">
+                <input type="button" onclick="sample6_execDaumPostcode()"  value="우편번호 찾기"><br>
+                <input type="text" id="sample6_address" class="input-field" name="addr1" placeholder="주소"><br>
+                <input type="text" id="sample6_detailAddress" class="input-field" name="addr2" placeholder="상세주소">
+
+            </div>
+
+            <button id="bt" class="submit">REGISTER</button>
+        </form>
+    </div>
+</div>
+</body>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    var pwdVail = "";
+    var emailCh = "";
+
+    $(document).ready(function(){
+    var errorMessage = [[${errorMessage}]];
+    if(errorMessage != null){
+    alert(errorMessage);
+    }
+
+    $("#bt").on("click",function(e){
+    console.log("비밀번호 , 이멜 유효성검사");
+    var frm = $("#form");
+    e.preventDefault();
+    if(pwdVail && emailCh == true){
+    frm.submit();
+    }
+    });
+
+
+    $("#pwd_check").on("propertychange change keyup paste input", function(){ <!--비밀번호 체크-->
+    var pwd = $("#pwd_input").val();
+    var pwdch = $("#pwd_check").val();
+    console.log(pwdch);
+
+    if(pwdch == ""){
+    pwdVail =false;
+    $(".pwd_ch_input").html('입력하지 않았습니다.');
+    $(".pwd_ch_input").attr("id","pwd_incorrect");
+    }else{
+      pwdVail =true;
+    }
+
+    if(pwd == pwdch){
+      $(".pwd_ch_input").html('비밀번호가 일치합니다.');
+    $(".pwd_ch_input").attr("id","pwd_correct");
+     pwdVail= true;
+    }else{
+     $(".pwd_ch_input").html('입력하지 않았습니다.');
+    $(".pwd_ch_input").attr("id","pwd_incorrect");
+    pwdVail =false;
+    }
+
+   });
+
+ });
+  <!--주소-->
+   function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                   addr += extraAddr;
+                   console.log(addr);
+
+                } else {
+                  addr += '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+
+    function emailCheck(){
+       var email = $("#email").val();
+       var num ="";
+
+
+       $.ajax({
+       url : "/members/mailCheck?email="+ email,
+       type : "GET",
+       success : function(data){
+        num = data;
+    },
+    error : function(data){
+        console.log(data);
+      }
+    }); //ajax
+
+  $("#mail_check_input").blur(function(){
+  var mailCh = $("#mail_check_input").val();
+    if(mailCh != num){
+    $("#mail_check_warn").html("인증번호를 다시 확인해주세요.");
+    $("#mail_check_warn").attr("class","incorrect");
+    emailCh = false;
+    }else{
+    $("#mail_check_warn").html("인증번호가 일치합니다.");
+    $("#mail_check_warn").attr("class","correct");
+    emailCh =true;
+    }
+    });
+    }
+  </script>
+</html>

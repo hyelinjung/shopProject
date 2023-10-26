@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>로그인 / 회원가입 폼 템플릿</title>
+    <link rel="stylesheet" href="../css/loginForm.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="form-wrap">
+        <div class="button-wrap">
+            <div id="btn"></div>
+            <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
+
+        </div>
+        <div class="social-icons">
+            <a href="/oauth2/authorization/google"><img class="google" src="../image/google.png" alt="google"></a>
+            <a href="/oauth2/authorization/naver"> <img src="../image/nv.png" alt="naver"></a>
+        </div>
+        <form id="login" action="/members/login" method="post" class="input-group">
+            <input type="text" th:name="username" class="input-field" placeholder="User name or Email" required>
+            <input type="password" th:name="password" class="input-field" placeholder="Enter Password" required>
+            <span class="join"><a href="/members/joinForm"> 아직 회원이 아니십니까?</a></span>
+            <button class="submit">Login</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+           $(document).ready(function(){
+    var errorMessage = [[${errorMessage}]];
+    if(errorMessage != null){
+    alert(errorMessage);
+    }
+    });
+
+
+        </script>
+</body>
+</html>

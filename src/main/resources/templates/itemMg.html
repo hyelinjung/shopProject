@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ogani Template">
+  <meta name="keywords" content="Ogani, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ogani | Template</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="../../css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="../../css/jquery-ui.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="../../css/style.css" type="text/css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+  <div class="humberger__menu__logo">
+    <a href="/"><img src="../../image/logo.png" alt=""></a>
+  </div>
+  <div class="humberger__menu__cart">
+    <ul>
+      <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+      <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+    </ul>
+    <div class="header__cart__price">item: <span>$150.00</span></div>
+  </div>
+  <div class="humberger__menu__widget">
+    <div class="header__top__right__language">
+      <img src="../../image/language.png" alt="">
+      <div>English</div>
+      <span class="arrow_carrot-down"></span>
+      <ul>
+        <li><a href="#">Spanis</a></li>
+        <li><a href="#">English</a></li>
+      </ul>
+    </div>
+    <div class="header__top__right__auth">
+      <a href="#"><i class="fa fa-user"></i> Login</a>
+    </div>
+  </div>
+  <nav class="humberger__menu__nav mobile-menu">
+    <ul>
+      <li class="active"><a href="./index.html">Home</a></li>
+      <li><a href="./shop-grid.html">Shop</a></li>
+      <li><a href="#">Pages</a>
+        <ul class="header__menu__dropdown">
+          <li><a href="./shop-details.html">Shop Details</a></li>
+          <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+          <li><a href="./checkout.html">Check Out</a></li>
+          <li><a href="./blog-details.html">Blog Details</a></li>
+        </ul>
+      </li>
+      <li><a href="./blog.html">Blog</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div id="mobile-menu-wrap"></div>
+  <div class="header__top__right__social">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+  </div>
+  <div class="humberger__menu__contact">
+    <ul>
+      <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+      <li>Free Shipping for all Order of $99</li>
+    </ul>
+  </div>
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__left">
+            <ul>
+              <li><i class="fa fa-envelope"></i> abc@naver.com</li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__right">
+            <div class="header__top__right__auth" sec:authorize="isAnonymous()">
+              <a href="/members/loginForm"><i class="fa fa-user"></i> Login</a>
+            </div>
+            <div class="header__top__right__auth" sec:authorize="isAuthenticated()">
+              <a href="/members/logout"><i class="fa fa-user"></i> Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="header__logo">
+          <a href="/"><img src="../image/logo.png" alt=""></a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <nav class="header__menu">
+          <ul>
+            <li class="active"><a href="/item/cate?largeItemType=O&sm=0">OUTER</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/item/cate?largeItemType=O&&subItemType=ja&sm=0">자켓</a></li>
+                <li><a href="/item/cate?largeItemType=O&&subItemType=jum&sm=0">점퍼</a></li>
+              </ul>
+            </li>
+            <li><a href="/item/cate?largeItemType=T">TOP</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/item/cate?largeItemType=T&&subItemType=ts&sm=0">티셔츠</a></li>
+                <li><a href="/item/cate?largeItemType=T&&subItemType=n&sm=0">니트</a></li>
+                <li><a href="/item/cate?largeItemType=T&&subItemType=shr&sm=0">셔츠</a></li>
+              </ul>
+            </li>
+            <li><a href="/item/cate?largeItemType=P">PANTS</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/item/cate?largeItemType=P&&subItemType=pa&sm=0">바지</a></li>
+                <li><a href="/item/cate?largeItemType=P&&subItemType=sl&sm=0">슬랙스</a></li>
+              </ul>
+            </li>
+            <li><a href="/item/cate?largeItemType=D">DRESS</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/item/cate?largeItemType=D&&subItemType=sk&sm=0">치마</a></li>
+                <li><a href="/item/cate?largeItemType=D&&subItemType=dr&sm=0">원피스</a></li>
+              </ul>
+            </li>
+            <li><a href="/item/cate?largeItemType=A">ACT</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/item/cate?largeItemType=A&&subItemType=sh&sm=0">신발</a></li>
+                <li><a href="/item/cate?largeItemType=A&&subItemType=ba&sm=0">신발</a></li>
+              </ul>
+            </li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+              <a  href="/admin/item/new">상품 등록</a>
+            </li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+              <a href="/admin/items">상품 관리</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-3">
+        <div class="header__cart">
+          <ul>
+            <li><a href="/user/likePage"><i class="fa fa-heart"></i> </a></li>
+            <li><a href="/user/cart"><i class="fa fa-shopping-bag"></i> </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="humberger__open">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
+<!-- 사용자 CSS 추가 -->
+  <style>
+        select{
+            margin-right:10px;
+        }
+
+    </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDate").val();
+            var searchSellStatus = $("#sellStatus").val();
+            var searchBy = $("#searchType").val();
+            var searchQuery = $("#searchBy").val();
+
+            location.href="/admin/items/" + page + "?searchDate=" + searchDateType
+            + "&sellStatus=" + searchSellStatus
+            + "&searchType=" + searchBy
+            + "&searchBy=" + searchQuery;
+        }
+
+    </script>
+<form action="#" role="form" method="get" th:object="${items}">
+    <table class="table">
+      <thead>
+      <tr>
+        <td>상품아이디</td>
+        <td>상품명</td>
+        <td>상태</td>
+        <td>등록일</td>
+        <td>수정일</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item, status: ${items.getContent()}">
+        <td th:text="${item.id}"></td>
+        <td>
+          <a th:href="'/admin/item/'+${item.id}" th:text="${item.itemNm}"></a>
+        </td>
+       <!-- <td th:text="${item.sellStatus == T(shoppingMall.project.constant.SellStatus).SELL} ? '판매중' : '품절'"></td>-->
+        <td th:text="${item.sellStatus}">
+        </td>
+
+        <td th:text="${item.regDateTime}"></td>
+        <td th:text="${item.updateTime}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+      <ul class="pagination justify-content-center" style="margin-top: 30px">
+
+        <li class="page-item" th:classappend="${items.first}?'disabled'">
+          <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label='Previous' class="page-link">
+            <span aria-hidden='true'>Previous</span>
+          </a>
+        </li>
+
+        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+          <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+        </li>
+
+        <li class="page-item" th:classappend="${items.last}?'disabled'">
+          <a th:onclick="'javascript:page(' + ${items.number + 1} + ')'" aria-label='Next' class="page-link">
+            <span aria-hidden='true'>Next</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="form-inline justify-content-center" style=" margin-bottom: 40px;" th:object="${searchDto}">
+      <select th:field="*{searchDate}" class="form-control" style="width:auto;">
+        <option value="all">전체기간</option>
+        <option value="1d">1일</option>
+        <option value="1w">1주</option>
+        <option value="1m">1개월</option>
+        <option value="6m">6개월</option>
+      </select>
+      <select th:field="*{sellStatus}" class="form-control" style="width:auto;">
+        <option value="">판매상태(전체)</option>
+        <option value="SELL">판매</option>
+        <option value="SOLD_OUT">품절</option>
+      </select>
+      <select th:field="*{searchType}" class="form-control" style="width:auto;">
+        <option value="itemNm">상품명</option>
+      </select>
+      <input th:field="*{searchBy}" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+      <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+    </div>
+  </form>
+
+<footer class="footer spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="footer__about">
+          <div class="footer__about__logo">
+            <a href="/"><img src="../../image/logo.png" alt=""></a>
+          </div>
+          <ul>
+            <li>Address: 60-49 Road 11378 New York</li>
+            <li>Phone: +65 11.188.888</li>
+            <li>Email: hello@colorlib.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+        <div class="footer__widget">
+          <h6>Useful Links</h6>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">About Our Shop</a></li>
+            <li><a href="#">Secure Shopping</a></li>
+            <li><a href="#">Delivery infomation</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Our Sitemap</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Who We Are</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Innovation</a></li>
+            <li><a href="#">Testimonials</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="footer__widget">
+          <h6>Join Our Newsletter Now</h6>
+          <p>Get E-mail updates about our latest shop and special offers.</p>
+          <form action="#">
+            <input type="text" placeholder="Enter your mail">
+            <button type="submit" class="site-btn">Subscribe</button>
+          </form>
+          <div class="footer__widget__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="footer__copyright">
+          <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+          <div class="footer__copyright__payment"><img src="../../image/payment-item.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<script src="../../js/jquery-3.3.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery.nice-select.min.js"></script>
+<script src="../../js/jquery-ui.min.js"></script>
+<script src="../../js/jquery.slicknav.js"></script>
+<script src="../../js/mixitup.min.js"></script>
+<script src="../../js/owl.carousel.min.js"></script>
+<script src="../../js/main.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+
+function logout(){
+console.log("logout");
+$.ajax({
+type : 'POST',
+url : '/members/logout',
+success : function(result){
+alert("로그아웃");
+location.href="/";
+},
+error : function(jqXHR, status, error){
+alert(jqXHR.responseText);
+}
+});
+}
+</script>
+</body>
+
+</html>
