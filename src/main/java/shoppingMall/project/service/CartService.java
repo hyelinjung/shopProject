@@ -45,6 +45,7 @@ public class CartService {
             cartItemRepository.save(cartItem);
         }
         cartItem.addCount(dto.getCount());
+        cartItemRepository.save(cartItem);
         return cartItem.getId();
     }
 

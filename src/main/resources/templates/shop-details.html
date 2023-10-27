@@ -108,7 +108,7 @@
                             <a href="/members/loginForm"><i class="fa fa-user"></i> Login</a>
                         </div>
                         <div class="header__top__right__auth" sec:authorize="isAuthenticated()">
-                            <a href="/members/logout"><i class="fa fa-user"></i> Logout</a>
+                            <a onclick="logout()"><i class="fa fa-user"></i> Logout</a>
                         </div>
                     </div>
                 </div>
@@ -481,17 +481,16 @@
     $.ajax({
     url : url,
     type : "POST",
-    dataType : "json",
     data : param,
     contentType : "application/json",
     cache   : false,
     success : function(result, status){
+    console.log(result);
    alert("상품을 장바구니에 담았습니다.");
     },
     error : function(jqXHR, status, error){
+          alert('로그인 후 이용해주세요');
 
-       alert('로그인 후 이용해주세요');
-            location.href='/members/loginForm';
     }
          });
          }
@@ -508,7 +507,6 @@
     $.ajax({
     url : url,
     type : "POST",
-    dataType : "json",
     data : param,
     contentType : "application/json",
     success : function(result, status){

@@ -27,7 +27,7 @@ public class LikesController {
         System.out.println("좋아요");
         System.out.println(id);
         if (!likesService.checkLikes(id, principal.getName())){
-            return new ResponseEntity<>("이미 등록된 상품입니다.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("이미 등록된 상품입니다.", HttpStatus.OK);
         }
         String username = principal.getName();
         try {
