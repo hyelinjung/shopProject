@@ -470,7 +470,7 @@
    $("#totalPrice").html(total+"원");
    }
 
-   function getCart(){
+   function getCart(){  //장바구니
     var paramData = {
      itemId : $("#itemId").val(),
      count : $("#count").val()
@@ -495,7 +495,7 @@
          });
          }
 
-     function getOrder(){
+     function getOrder(){ // 주문
 
     var paramData = {
      itemId : $("#itemId").val(),

@@ -40,7 +40,7 @@ public class CartService {
         Cart cart = checkCart(username);
         Item item = itemRepository.findById(dto.getItemId()).orElseThrow(EntityNotFoundException::new);
         CartItem cartItem = cartItemRepository.findByCartIdAndItemId(cart.getId(), dto.getItemId());
-        if (cartItem == null) {
+        if (cartItem == null) { //이미 장바구니에 추가한 상품인지
             cartItem = CartItem.createCartItem(item, dto.getCount(), cart);
             cartItemRepository.save(cartItem);
         }
