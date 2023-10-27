@@ -1,41 +1,41 @@
 # :gift:스프링부트로 제작한 웹 쇼핑몰
 ## :pencil2:개발환경
-IntelliJ
++ IntelliJ
 
-PostMan
+- PostMan
 
-Apache Tomcat 
+-Apache Tomcat 
 ## :pencil2:사용 기술
 ### 백엔드
 #### Spring boot
-JAVA 11
+- JAVA 11
 
-Spring MVC
+- Spring MVC
 
-Spring Boot Secutiry
+- Spring Boot Secutiry
 
-Spring Data JPA
+- Spring Data JPA
 
-JWT
+- JWT
 
-OAuth2.0
+- OAuth2.0
 #### Build tool
-maven
+- maven
 #### Database
-MySql
+- MySql
 ### 프론트엔드
-javascript
+- javascript
 
-jQuery
+- jQuery
 
 ## :pencil2:주요 키워드
-REST API
+- REST API
 
-시큐리티
+- 시큐리티
 
-JPA
+- JPA
 
-페이징
+- 페이징
 
 ## :pencil2:View
 
@@ -46,3 +46,5 @@ JPA
 ### 장바구니 & 관심상품페이지
 
 ## :pencil2:ERD
+<img width="627" alt="ERD" src="https://github.com/hyelinjung/shopProject/assets/105259225/2a481206-ad55-4bdf-b284-f79f7baef5aa">
+
