@@ -4,7 +4,7 @@
 
 - PostMan
 
--Apache Tomcat 
+- Apache Tomcat 
 ## :pencil2:사용 기술
 ### 백엔드
 #### Spring boot
