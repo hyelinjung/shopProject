@@ -19,6 +19,12 @@
 - JWT
 
 - OAuth2.0
+
+#### AWS
+- AWS Lightsail
+  
+- DNS
+  
 #### Build tool
 - maven
 #### Database
